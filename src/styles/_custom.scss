@@ -15,6 +15,10 @@ body {
 .btn-primary {
   background-color: $white;
   color: $primary;
+  &:hover, &:active {
+    background-color: $white;
+    color: $primary;
+  }
 }
 .btn-light {
   background-color: $white;
