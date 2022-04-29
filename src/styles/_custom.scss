@@ -4,3 +4,14 @@
   box-sizing: border-box;
   --webkit-font-smoothing: antialiased;
 }
+
+body {
+  background-color: $primary;
+}
+
+
+// BUTTONS
+.btn-primary {
+  background-color: $white;
+  color: $primary;
+}
