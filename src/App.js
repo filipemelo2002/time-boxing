@@ -1,7 +1,13 @@
 function App() {
   return (
-    <div className="w-100 d-flex m-auto">
-      <button className="btn btn-sm btn-dark">Save</button>
+    <div>
+      <button className="m-5 btn btn-sm btn-primary">Save</button>
+      <button className="m-5 btn btn btn-primary">Save</button>
+      <button className="m-5 btn btn-lg btn-primary">Save</button>
+      <br />
+      <button className="m-5 btn btn-sm btn-dark">Save</button>
+      <button className="m-5 btn btn-dark">Save</button>
+      <button className="m-5 btn btn-lg btn-dark">Save</button>
     </div>
   );
 }
