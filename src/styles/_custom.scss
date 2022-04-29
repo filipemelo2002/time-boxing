@@ -20,3 +20,14 @@ body {
   background-color: $white;
   color: map.get($colors, "gray");
 }
+
+.btn-secondary {
+  background-color: shade-color($primary, 20%);
+  color: $white;
+  border: 2px dashed $white;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: shade-color($primary, 30%);
+    border: 2px dashed $white;
+  }
+}
