@@ -1,5 +1,9 @@
 function App() {
-  return <h1 className="bg-primary fw-bold">TimeBoxing</h1>;
+  return (
+    <div className="w-100 d-flex m-auto">
+      <button className="btn btn-sm btn-dark">Save</button>
+    </div>
+  );
 }
 
 export default App;
