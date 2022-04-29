@@ -1,3 +1,5 @@
+@use "sass:map";
+
 * {
   margin: 0;
   padding: 0;
@@ -9,9 +11,12 @@ body {
   background-color: $primary;
 }
 
-
 // BUTTONS
 .btn-primary {
   background-color: $white;
   color: $primary;
+}
+.btn-light {
+  background-color: $white;
+  color: map.get($colors, "gray");
 }
