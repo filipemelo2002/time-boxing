@@ -35,3 +35,17 @@ body {
     border: 2px dashed $white;
   }
 }
+
+.select {
+  cursor: pointer;
+  padding: $btn-padding-y $btn-padding-x;
+}
+.select-primary {
+  background-color: transparent;
+  border: 2px solid $white;
+  color: $white;
+  &:hover, &:active, &:focus {
+    background-color: transparent;
+  }
+  
+}

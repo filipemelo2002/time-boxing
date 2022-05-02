@@ -1,3 +1,4 @@
+import Select from "./components/Select";
 function App() {
   return (
     <div>
@@ -16,6 +17,26 @@ function App() {
       <button className="m-5 btn btn-sm btn-dark">Save</button>
       <button className="m-5 btn btn-dark">Save</button>
       <button className="m-5 btn btn-lg btn-dark">Save</button>
+      <br />
+      <div className="d-flex mx-5">
+        <Select
+          className="select select-primary w-auto "
+          data={[
+            { name: "Option 1", value: "1" },
+            { name: "Option 2", value: "2" },
+            { name: "Option 3", value: "3" },
+          ]}
+        />
+
+        <Select
+          className="select select-secondary w-auto mx-5"
+          data={[
+            { name: "Option 1", value: "1" },
+            { name: "Option 2", value: "2" },
+            { name: "Option 3", value: "3" },
+          ]}
+        />
+      </div>
     </div>
   );
 }
