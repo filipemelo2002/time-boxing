@@ -20,7 +20,7 @@ function App() {
       <br />
       <div className="d-flex mx-5">
         <Select
-          className="select select-primary w-auto "
+          className="form-select select select-primary w-auto "
           data={[
             { name: "Option 1", value: "1" },
             { name: "Option 2", value: "2" },
@@ -29,7 +29,7 @@ function App() {
         />
 
         <Select
-          className="select select-secondary w-auto mx-5"
+          className="form-select select select-secondary w-auto mx-5"
           data={[
             { name: "Option 1", value: "1" },
             { name: "Option 2", value: "2" },

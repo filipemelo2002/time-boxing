@@ -1,5 +1,14 @@
 @use "sass:map";
 
+@function encodecolor($string) {
+	@if type-of($string) == 'color' {
+        $hex: str-slice(ie-hex-str($string), 4);
+        $string:unquote("#{$hex}");
+    }
+    $string: '%23' + $string;
+	@return $string;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -36,16 +45,22 @@ body {
   }
 }
 
-.select {
-  cursor: pointer;
-  padding: $btn-padding-y $btn-padding-x;
-}
+
 .select-primary {
   background-color: transparent;
   border: 2px solid $white;
   color: $white;
   &:hover, &:active, &:focus {
     background-color: transparent;
+    color: $white;
+  }
+
+  option {
+    color: $black;
   }
   
+}
+
+.select-secondary {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{encodecolor($black)}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
 }
