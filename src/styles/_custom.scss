@@ -64,3 +64,17 @@ body {
 .select-secondary {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{encodecolor($black)}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
 }
+
+.braindump {
+  max-width: 22.5rem;
+
+  textarea {
+    border: none;
+    border-left: 4px solid $black;
+    resize: vertical;
+    width: 100%;
+    min-height: 18.75rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+  }
+}

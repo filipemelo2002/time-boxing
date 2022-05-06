@@ -1,3 +1,4 @@
+import BrainDump from "./components/BrainDump";
 import Select from "./components/Select";
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
             { name: "Option 3", value: "3" },
           ]}
         />
+      </div>
+      <div className="m-5">
+        <BrainDump />
       </div>
     </div>
   );
