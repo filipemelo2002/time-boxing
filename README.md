@@ -24,7 +24,7 @@ If you decide to use VSCode, you can install the following extensions which will
  ## 👇 Cloning and installing dependencies
 First, you need to clone this repository. To do this, paste the code below on your terminal:
 ```bash
-git clone git@github.com:filipemelo2002/time-boxing.git time-boxing
+git clone https://github.com/filipemelo2002/time-boxing.git time-boxing
 ```
 Then you can checkout to the folder you just created:
 ```bash
