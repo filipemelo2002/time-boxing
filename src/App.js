@@ -1,4 +1,5 @@
 import BrainDump from "./components/BrainDump";
+import AddTaskButton from "./components/AddTaskButton";
 import Select from "./components/Select";
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             { name: "Option 3", value: "3" },
           ]}
         />
+        <AddTaskButton />
       </div>
       <div className="m-5">
         <BrainDump />
