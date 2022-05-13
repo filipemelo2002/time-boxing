@@ -14,6 +14,7 @@
   padding: 0;
   box-sizing: border-box;
   --webkit-font-smoothing: antialiased;
+  outline-color: rgba(229, 89, 71, 0.3);
 }
 
 body {
@@ -24,7 +25,7 @@ body {
 .btn-primary {
   background-color: $white;
   color: $primary;
-  &:hover, &:active {
+  &:hover, &:active, &:focus {
     background-color: $white;
     color: $primary;
   }
@@ -39,12 +40,16 @@ body {
   color: $white;
   border: 2px dashed $white;
   transition: all 0.2s ease-in-out;
-  &:hover {
+  &:hover,  &:active, &:focus {
     background-color: shade-color($primary, 30%);
     border: 2px dashed $white;
   }
 }
 
+.select {
+  height: fit-content;
+  width: fit-content;
+}
 
 .select-primary {
   background-color: transparent;
@@ -78,3 +83,8 @@ body {
     margin-top: 0.5rem;
   }
 }
+.border-left {
+  border-left: 4px solid $black;
+}
+
+@import './components/add_task_component';
