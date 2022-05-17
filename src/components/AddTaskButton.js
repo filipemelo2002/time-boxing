@@ -7,7 +7,13 @@ const AddTaskButton = ({ onSave, onDelete, task }) => {
     return (
       <div className="add-task-container border-left">
         <input placeholder="Task title..." />
-        <textarea className="mt-3" name="" id="" cols="30" rows="10"></textarea>
+        <textarea
+          className="rounded"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
         <Select
           data={[
             { name: "15min", value: 1 },
@@ -34,7 +40,7 @@ const AddTaskButton = ({ onSave, onDelete, task }) => {
 
   return (
     <button
-      className="btn btn-lg btn-secondary"
+      className="btn btn-lg btn-secondary add-activity-button"
       onClick={() => setEditMode(!editMode)}
     >
       Add Task
