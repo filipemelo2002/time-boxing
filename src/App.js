@@ -1,6 +1,7 @@
 import BrainDump from "./components/BrainDump";
 import AddTaskButton from "./components/AddTaskButton";
 import Select from "./components/Select";
+import TopPriorities from "./components/TopPrioritites";
 function App() {
   return (
     <div>
@@ -42,6 +43,9 @@ function App() {
       </div>
       <div className="m-5">
         <BrainDump />
+      </div>
+      <div className="m-5">
+        <TopPriorities />
       </div>
     </div>
   );
