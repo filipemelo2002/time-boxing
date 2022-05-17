@@ -19,8 +19,12 @@
   textarea {
     background: $gray-400;
     border: 0;
-    border-radius: 0.5rem;
     height: 5rem;
     padding: 1rem;
   }
+}
+
+.add-activity-button {
+  width: 100%;
+  max-width: 22.5rem;
 }
