@@ -25,6 +25,7 @@ body {
 .btn-primary {
   background-color: $white;
   color: $primary;
+  border: 0;
   &:hover, &:active, &:focus {
     background-color: $white;
     color: $primary;
@@ -70,9 +71,8 @@ body {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{encodecolor($black)}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
 }
 
-.braindump {
-  max-width: 22.5rem;
 
+.braindump {
   textarea {
     border: none;
     border-left: 4px solid $black;
@@ -83,8 +83,16 @@ body {
     margin-top: 0.5rem;
   }
 }
+
+.braindump, .top-prioritites {
+  max-width: 22.5rem;
+}
 .border-left {
   border-left: 4px solid $black;
+}
+
+.text-gray {
+  color: map.get($colors, "gray");
 }
 
 @import './components/add_task_component';
