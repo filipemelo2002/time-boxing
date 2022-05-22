@@ -3,6 +3,7 @@ import AddTaskButton from "./components/AddTaskButton";
 import Select from "./components/Select";
 import TopPriorities from "./components/TopPrioritites";
 import Timer from "./components/Timer";
+import Activities from "./components/Activities";
 function App() {
   return (
     <div>
@@ -50,6 +51,9 @@ function App() {
       </div>
       <div className="m-5">
         <Timer />
+      </div>
+      <div className="m-5">
+        <Activities />
       </div>
     </div>
   );
