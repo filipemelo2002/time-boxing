@@ -64,7 +64,7 @@ body {
   option {
     color: $black;
   }
-  
+
 }
 
 .select-secondary {
@@ -96,3 +96,4 @@ body {
 }
 
 @import './components/add_task_component';
+@import './components/timer_component';
