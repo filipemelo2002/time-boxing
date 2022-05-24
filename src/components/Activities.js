@@ -4,8 +4,8 @@ import Select from "./Select";
 
 const Activities = () => {
   return (
-    <div className="activities-component">
-      <div className="d-flex w-100 border-2 border-bottom">
+    <div className="activities-component w-100">
+      <div className="d-flex border-2 border-bottom">
         <h4 className="text-white fw-bold align-self-center">Activites</h4>
 
         <Select
