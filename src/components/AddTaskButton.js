@@ -40,7 +40,7 @@ const AddTaskButton = ({ onSave, onDelete, task }) => {
 
   return (
     <button
-      className="btn btn-lg btn-secondary add-activity-button"
+      className="btn btn-secondary add-activity-button w-100"
       onClick={() => setEditMode(!editMode)}
     >
       Add Task
