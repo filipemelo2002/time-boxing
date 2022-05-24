@@ -1,61 +1,22 @@
 import BrainDump from "./components/BrainDump";
-import AddTaskButton from "./components/AddTaskButton";
-import Select from "./components/Select";
 import TopPriorities from "./components/TopPrioritites";
 import Timer from "./components/Timer";
 import Activities from "./components/Activities";
+import { ReactComponent as Logo } from "./assets/logo.svg";
+
 function App() {
   return (
-    <div>
-      <button className="m-5 btn btn-sm btn-primary">Save</button>
-      <button className="m-5 btn btn btn-primary">Save</button>
-      <button className="m-5 btn btn-lg btn-primary">Save</button>
-      <br />
-      <button className="m-5 btn btn-sm btn-secondary">Save</button>
-      <button className="m-5 btn btn btn-secondary">Save</button>
-      <button className="m-5 btn btn-lg btn-secondary">Save</button>
-      <br />
-      <button className="m-5 btn btn-sm btn-light">Save</button>
-      <button className="m-5 btn btn btn-light">Save</button>
-      <button className="m-5 btn btn-lg btn-light">Save</button>
-      <br />
-      <button className="m-5 btn btn-sm btn-dark">Save</button>
-      <button className="m-5 btn btn-dark">Save</button>
-      <button className="m-5 btn btn-lg btn-dark">Save</button>
-      <br />
-      <div className="d-flex mx-5">
-        <Select
-          className="form-select select select-primary w-auto "
-          data={[
-            { name: "Option 1", value: "1" },
-            { name: "Option 2", value: "2" },
-            { name: "Option 3", value: "3" },
-          ]}
-        />
-
-        <Select
-          className="form-select select select-secondary w-auto mx-5"
-          data={[
-            { name: "Option 1", value: "1" },
-            { name: "Option 2", value: "2" },
-            { name: "Option 3", value: "3" },
-          ]}
-        />
-        <AddTaskButton />
-      </div>
-      <div className="m-5">
+    <>
+      <div className="d-grid template-columns-2 m-auto px-2 gap-3">
+        <div className="d-flex flex-column align-items-center gap-4 justify-content-center">
+          <Logo className="mt-4 me-auto img-logo img-logo-container" />
+          <Timer />
+          <TopPriorities />
+          <Activities />
+        </div>
         <BrainDump />
       </div>
-      <div className="m-5">
-        <TopPriorities />
-      </div>
-      <div className="m-5">
-        <Timer />
-      </div>
-      <div className="m-5">
-        <Activities />
-      </div>
-    </div>
+    </>
   );
 }
 
