@@ -1,6 +1,6 @@
 .add-task-container {
   width: 100%;
-  max-width: 22.5rem;
+  max-width: $base-max-width;
   background: $white;
   padding: 1rem;
   display: grid;
@@ -14,7 +14,7 @@
     &::placeholder {
       color: map.get($colors, "gray");
     }
-  } 
+  }
 
   textarea {
     background: $gray-400;
@@ -22,9 +22,4 @@
     height: 5rem;
     padding: 1rem;
   }
-}
-
-.add-activity-button {
-  width: 100%;
-  max-width: 22.5rem;
 }
