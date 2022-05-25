@@ -17,6 +17,8 @@
   outline-color: rgba(229, 89, 71, 0.3);
 }
 
+$base-max-width: 22.5rem !default;
+
 body {
   background-color: $primary;
 }
@@ -73,6 +75,7 @@ body {
 
 
 .braindump {
+  margin-top: 5.125rem;
   textarea {
     border: none;
     border-left: 4px solid $black;
@@ -85,14 +88,30 @@ body {
 }
 
 .braindump, .top-prioritites {
-  max-width: 22.5rem;
+  width: 100%;
 }
+
 .border-left {
   border-left: 4px solid $black;
 }
 
 .text-gray {
   color: map.get($colors, "gray");
+}
+
+.img-logo-container {
+  grid-column: 1 / -1;
+}
+
+.template-columns-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 47.125rem;
+  width: 100%;
+  padding: 1rem;
+  @include media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+    padding: 2rem !important;
+  }
 }
 
 @import './components/add_task_component';
