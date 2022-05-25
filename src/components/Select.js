@@ -9,5 +9,4 @@ const Select = ({ data = [], value, onChange, className, ...props }) => {
     </select>
   );
 };
-
 export default Select;
