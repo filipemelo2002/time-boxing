@@ -33,6 +33,15 @@ const TimeBoxingContextProvider = ({ children }) => {
     newTimeBoxing.activities.push(activity);
     setTimeBoxing(newTimeBoxing);
   };
+
+  const onRemoveActivity = (id) => {
+    const newTimeBoxing = structuredClone(timeBoxing);
+
+    newTimeBoxing.activities = newTimeBoxing.activities.filter(
+      (item) => item.id !== id
+    );
+    setTimeBoxing(newTimeBoxing);
+  };
   return (
     <TimeBoxingContext.Provider
       value={{
@@ -41,6 +50,7 @@ const TimeBoxingContextProvider = ({ children }) => {
         onChangeBrainDump,
         onRemoveTopPriority,
         onAddActivity,
+        onRemoveActivity,
       }}
     >
       {children}

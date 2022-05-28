@@ -6,7 +6,7 @@ import Select from "./Select";
 
 const Activities = () => {
   const [time, setTime] = useState(new Date().getHours());
-  const { activities, onAddActivity } = useTimeBoxing();
+  const { activities, onAddActivity, onRemoveActivity } = useTimeBoxing();
   const totalActivitiesDuration = useMemo(() => {
     const currentTimeActivities = activities.filter(
       (activity) => activity.time === time
@@ -64,7 +64,7 @@ const Activities = () => {
               description={activity.description}
               done={activity.done}
               duration={activity.duration}
-              onRemove={() => {}}
+              onRemove={() => onRemoveActivity(activity.id)}
             />
           ))}
       </div>
