@@ -32,10 +32,10 @@ const ActivityItem = ({ done, title, description, duration, onRemove }) => {
           <div className="d-flex gap-3">
             <Select
               data={[
-                { name: "15min", value: 1 },
-                { name: "30min", value: 2 },
-                { name: "45min", value: 3 },
-                { name: "60min", value: 4 },
+                { name: "15 min", value: 1 },
+                { name: "30 min", value: 2 },
+                { name: "45 min", value: 3 },
+                { name: "60 min", value: 4 },
               ]}
               value={duration}
               disabled

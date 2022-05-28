@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { uuidv4 } from "../utils";
 import Select from "./Select";
-const AddTaskButton = ({ onSave }) => {
+const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
   const [task, setTask] = useState({
     title: "",
     description: "",
@@ -15,7 +15,7 @@ const AddTaskButton = ({ onSave }) => {
   };
 
   const onChangeDuration = (event) => {
-    setTask({ ...task, duration: event.target.value });
+    setTask({ ...task, duration: Number(event.target.value) });
   };
 
   const onChangeDescription = (event) => {
@@ -28,6 +28,7 @@ const AddTaskButton = ({ onSave }) => {
       description: "",
       duration: 1,
     });
+    setEditMode(false);
   };
 
   const handleOnSave = () => {
@@ -35,7 +36,6 @@ const AddTaskButton = ({ onSave }) => {
       alert("Por favor, preencha todos os campos!");
       return;
     }
-
     onSave({ ...task, id: uuidv4() });
     resetForm();
   };
@@ -61,11 +61,11 @@ const AddTaskButton = ({ onSave }) => {
         <div className="d-flex gap-1 flex-wrap mt-3">
           <Select
             data={[
-              { name: "15min", value: 1 },
-              { name: "30min", value: 2 },
-              { name: "45min", value: 3 },
-              { name: "60min", value: 4 },
-            ]}
+              { name: "15 min", value: 1 },
+              { name: "30 min", value: 2 },
+              { name: "45 min", value: 3 },
+              { name: "60 min", value: 4 },
+            ].filter(({ value }) => value <= maxDuration)}
             value={task.duration}
             onChange={onChangeDuration}
             className="form-select select select-secondary"
