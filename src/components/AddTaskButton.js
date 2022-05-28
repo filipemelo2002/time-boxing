@@ -25,13 +25,14 @@ const AddTaskButton = ({ onSave }) => {
     setTask({
       title: "",
       description: "",
-      duration: 0,
+      duration: 1,
     });
   };
 
   const handleOnSave = () => {
     if (!task.title || !task.duration || !task.description) {
-      alert("Please, fill all fields!");
+      alert("Por favor, preencha todos os campos!");
+      return;
     }
 
     onSave(task);
