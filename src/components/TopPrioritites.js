@@ -1,7 +1,7 @@
 import ActivityItem from "./ActivityItem";
 import AddTaskButton from "./AddTaskButton";
 
-const TopPriorities = () => {
+const TopPriorities = ({ topPriorities = [], onAddTopPriority }) => {
   return (
     <div className="top-prioritites">
       <div className="d-flex w-100 border-2 border-bottom">
@@ -10,8 +10,14 @@ const TopPriorities = () => {
       </div>
 
       <div className="d-flex flex-column gap-3 mt-3">
-        <ActivityItem />
-        <ActivityItem done={true} />
+        {topPriorities.map((topPriority, index) => (
+          <ActivityItem
+            key={index}
+            title={topPriority.title}
+            description={topPriority.description}
+            done={topPriority.done}
+          />
+        ))}
       </div>
       <div className="mt-3">
         <AddTaskButton />
