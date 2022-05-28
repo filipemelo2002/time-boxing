@@ -4,11 +4,14 @@ import ReactDOM from "react-dom/client";
 import "./styles/global.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { TimeBoxingContextProvider } from "./contexts/TimeBoxingContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <TimeBoxingContextProvider>
+      <App />
+    </TimeBoxingContextProvider>
   </React.StrictMode>
 );
 
