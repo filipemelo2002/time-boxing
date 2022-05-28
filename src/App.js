@@ -3,8 +3,11 @@ import TopPriorities from "./components/TopPrioritites";
 import Timer from "./components/Timer";
 import Activities from "./components/Activities";
 import { ReactComponent as Logo } from "./assets/logo.svg";
+import { useTimeBoxing } from "./contexts/TimeBoxingContext";
 
 function App() {
+  const { brainDump, onChangeBrainDump } = useTimeBoxing();
+
   return (
     <>
       <div className="d-grid template-columns-2 m-auto px-2 gap-3">
@@ -14,7 +17,10 @@ function App() {
           <TopPriorities />
           <Activities />
         </div>
-        <BrainDump />
+        <BrainDump
+          value={brainDump}
+          onChange={(event) => onChangeBrainDump(event.target.value)}
+        />
       </div>
     </>
   );
