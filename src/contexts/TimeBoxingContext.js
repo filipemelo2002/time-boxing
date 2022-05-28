@@ -1,9 +1,23 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-const TimeBoxingContext = createContext();
+const INITIAL_STATE = {
+  braindump: "",
+  topPriorities: [],
+  activities: [],
+};
+const TimeBoxingContext = createContext({});
 
 const TimeBoxingContextProvider = ({ children }) => {
-  return <TimeBoxingContext.Provider>{children}</TimeBoxingContext.Provider>;
+  const [timeBoxing, setTimeBoxing] = useState(INITIAL_STATE);
+
+  const onChangeBrainDump = (braindump) => {
+    setTimeBoxing({ ...timeBoxing, braindump });
+  };
+  return (
+    <TimeBoxingContext.Provider value={{ ...timeBoxing, onChangeBrainDump }}>
+      {children}
+    </TimeBoxingContext.Provider>
+  );
 };
 
 const useTimeBoxing = () => useContext(TimeBoxingContext);
