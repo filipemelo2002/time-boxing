@@ -27,6 +27,12 @@ const TimeBoxingContextProvider = ({ children }) => {
       topPriorities: timeBoxing.topPriorities.filter((item) => item.id !== id),
     });
   };
+
+  const onAddActivity = (activity) => {
+    const newTimeBoxing = structuredClone(timeBoxing);
+    newTimeBoxing.activities.push(activity);
+    setTimeBoxing(newTimeBoxing);
+  };
   return (
     <TimeBoxingContext.Provider
       value={{
@@ -34,6 +40,7 @@ const TimeBoxingContextProvider = ({ children }) => {
         onAddTopPriority,
         onChangeBrainDump,
         onRemoveTopPriority,
+        onAddActivity,
       }}
     >
       {children}
