@@ -8,13 +8,13 @@ function App() {
   return (
     <>
       <div className="d-grid template-columns-2 m-auto px-2 gap-3">
-        <div className="d-flex flex-column align-items-center gap-4 justify-content-center">
-          <Logo className="mt-4 me-auto img-logo img-logo-container" />
+        <Logo className="mt-4 me-auto img-logo img-logo-container" />
+        <div className="d-flex flex-column align-items-center gap-4 h-100">
           <Timer />
           <TopPriorities />
-          <Activities />
+          <BrainDump />
         </div>
-        <BrainDump />
+        <Activities />
       </div>
     </>
   );
