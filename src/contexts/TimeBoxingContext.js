@@ -13,8 +13,17 @@ const TimeBoxingContextProvider = ({ children }) => {
   const onChangeBrainDump = (braindump) => {
     setTimeBoxing({ ...timeBoxing, braindump });
   };
+
+  const addTopPriority = (topPriority) => {
+    setTimeBoxing({
+      ...timeBoxing,
+      topPriorities: [...timeBoxing.topPriorities, topPriority],
+    });
+  };
   return (
-    <TimeBoxingContext.Provider value={{ ...timeBoxing, onChangeBrainDump }}>
+    <TimeBoxingContext.Provider
+      value={{ ...timeBoxing, addTopPriority, onChangeBrainDump }}
+    >
       {children}
     </TimeBoxingContext.Provider>
   );
