@@ -18,7 +18,9 @@ const ActivityItem = ({ done, title, description, duration }) => {
         </h4>
 
         <button
-          className={`btn p-0 ms-auto ${done ? "btn-primary" : "btn-light"}`}
+          className={`shadow btn p-0 ms-auto ${
+            done ? "btn-primary" : "btn-light"
+          }`}
         >
           <Icon />
         </button>
@@ -26,7 +28,12 @@ const ActivityItem = ({ done, title, description, duration }) => {
       {openDescription && (
         <>
           <p>{description}</p>
-          <button className="btn btn-sm btn-dark me-auto">Delete</button>
+          <div className="d-flex gap-3">
+            <button className="btn btn-sm btn-dark">Start</button>
+            <button className="shadow btn btn-sm btn-light me-auto">
+              Delete
+            </button>
+          </div>
         </>
       )}
     </div>

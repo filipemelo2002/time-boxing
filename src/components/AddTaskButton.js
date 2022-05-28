@@ -55,21 +55,21 @@ const AddTaskButton = ({ onSave }) => {
           value={task.description}
           onChange={onChangeDescription}
         />
-        <Select
-          data={[
-            { name: "15min", value: 1 },
-            { name: "30min", value: 2 },
-            { name: "45min", value: 3 },
-            { name: "60min", value: 4 },
-          ]}
-          value={task.duration}
-          onChange={onChangeDuration}
-          className="form-select select select-secondary mt-3"
-        />
 
-        <div className="d-flex gap-3 mt-3">
+        <div className="d-flex gap-1 flex-wrap mt-3">
+          <Select
+            data={[
+              { name: "15min", value: 1 },
+              { name: "30min", value: 2 },
+              { name: "45min", value: 3 },
+              { name: "60min", value: 4 },
+            ]}
+            value={task.duration}
+            onChange={onChangeDuration}
+            className="form-select select select-secondary"
+          />
           <button
-            className="ms-auto btn btn-sm btn-light"
+            className="shadow ms-auto btn btn-sm btn-light"
             onClick={() => {
               setEditMode(!editMode);
               resetForm();
