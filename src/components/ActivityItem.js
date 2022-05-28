@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ReactComponent as Icon } from "../assets/check.svg";
+import Select from "./Select";
 
-const ActivityItem = ({ done, title, description, duration }) => {
+const ActivityItem = ({ done, title, description, duration, onRemove }) => {
   const [openDescription, setOpenDescription] = useState(false);
   return (
     <div
@@ -29,10 +30,28 @@ const ActivityItem = ({ done, title, description, duration }) => {
         <>
           <p>{description}</p>
           <div className="d-flex gap-3">
-            <button className="btn btn-sm btn-dark">Start</button>
-            <button className="shadow btn btn-sm btn-light me-auto">
+            <Select
+              data={[
+                { name: "15min", value: 1 },
+                { name: "30min", value: 2 },
+                { name: "45min", value: 3 },
+                { name: "60min", value: 4 },
+              ]}
+              value={duration}
+              disabled
+              className="form-select select select-secondary me-auto"
+            />
+            <button
+              className="shadow btn btn-sm btn-light"
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                onRemove();
+              }}
+            >
               Delete
             </button>
+            <button className="btn btn-sm btn-dark">Start</button>
           </div>
         </>
       )}

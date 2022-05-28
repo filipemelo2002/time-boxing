@@ -20,9 +20,21 @@ const TimeBoxingContextProvider = ({ children }) => {
       topPriorities: [...timeBoxing.topPriorities, topPriority],
     });
   };
+
+  const onRemoveTopPriority = (id) => {
+    setTimeBoxing({
+      ...timeBoxing,
+      topPriorities: timeBoxing.topPriorities.filter((item) => item.id !== id),
+    });
+  };
   return (
     <TimeBoxingContext.Provider
-      value={{ ...timeBoxing, onAddTopPriority, onChangeBrainDump }}
+      value={{
+        ...timeBoxing,
+        onAddTopPriority,
+        onChangeBrainDump,
+        onRemoveTopPriority,
+      }}
     >
       {children}
     </TimeBoxingContext.Provider>
