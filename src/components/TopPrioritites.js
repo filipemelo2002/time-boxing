@@ -26,9 +26,11 @@ const TopPriorities = () => {
           />
         ))}
       </div>
-      <div className="mt-3">
-        <AddTaskButton onSave={(task) => onAddTopPriority(task)} />
-      </div>
+      {topPriorities.length < 3 && (
+        <div className="mt-3">
+          <AddTaskButton onSave={(task) => onAddTopPriority(task)} />
+        </div>
+      )}
     </div>
   );
 };
