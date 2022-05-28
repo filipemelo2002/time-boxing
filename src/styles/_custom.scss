@@ -21,6 +21,7 @@ $base-max-width: 22.5rem !default;
 
 body {
   background-color: $primary;
+  word-wrap: break-word;
 }
 
 // BUTTONS
@@ -104,7 +105,7 @@ body {
 }
 
 .template-columns-2 {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(50%, 1fr));
   max-width: 47.125rem;
   width: 100%;
   padding: 1rem;
