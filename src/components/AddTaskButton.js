@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { uuidv4 } from "../utils";
 import Select from "./Select";
 const AddTaskButton = ({ onSave }) => {
   const [task, setTask] = useState({
@@ -35,7 +36,7 @@ const AddTaskButton = ({ onSave }) => {
       return;
     }
 
-    onSave(task);
+    onSave({ ...task, id: uuidv4() });
     resetForm();
   };
   if (editMode) {
