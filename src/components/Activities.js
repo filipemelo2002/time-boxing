@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useTimeBoxing } from "../contexts/TimeBoxingContext";
 import ActivityItem from "./ActivityItem";
 import AddTaskButton from "./AddTaskButton";
 import Select from "./Select";
 
 const Activities = () => {
   const [time, setTime] = useState(new Date().getHours());
+  const { activities, onAddActivity } = useTimeBoxing();
+  const totalActivitiesDuration = useMemo(() => {
+    const currentTimeActivities = activities.filter(
+      (activity) => activity.time === time
+    );
+    const durationSum = currentTimeActivities.reduce(
+      (sum, activity) => sum + activity.duration,
+      0
+    );
+    return durationSum;
+  }, [activities, time]);
   return (
     <div className="activities-component w-100">
       <div className="d-flex border-2 border-bottom">
@@ -39,16 +51,32 @@ const Activities = () => {
             { name: "23:00", value: 23 },
           ]}
           value={time}
-          onChange={(event) => setTime(event.target.value)}
+          onChange={(event) => setTime(Number(event.target.value))}
         />
       </div>
       <div className="d-flex flex-column gap-3 mt-3">
-        <ActivityItem />
-        <ActivityItem done={true} />
+        {activities
+          .filter((activity) => activity.time === time)
+          .map((activity) => (
+            <ActivityItem
+              key={activity.id}
+              title={activity.title}
+              description={activity.description}
+              done={activity.done}
+              duration={activity.duration}
+              onRemove={() => {}}
+            />
+          ))}
       </div>
-      <div className="mt-3">
-        <AddTaskButton />
-      </div>
+
+      {totalActivitiesDuration < 4 && (
+        <div className="mt-3">
+          <AddTaskButton
+            onSave={(task) => onAddActivity({ ...task, time })}
+            maxDuration={4 - totalActivitiesDuration}
+          />
+        </div>
+      )}
     </div>
   );
 };
