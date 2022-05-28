@@ -1,19 +1,60 @@
 import { useState } from "react";
 import Select from "./Select";
-const AddTaskButton = ({ onSave, onDelete, task }) => {
+const AddTaskButton = ({ onSave }) => {
+  const [task, setTask] = useState({
+    title: "",
+    description: "",
+    duration: 1,
+  });
+
   const [editMode, setEditMode] = useState(false);
 
+  const onChangeTitle = (event) => {
+    setTask({ ...task, title: event.target.value });
+  };
+
+  const onChangeDuration = (event) => {
+    setTask({ ...task, duration: event.target.value });
+  };
+
+  const onChangeDescription = (event) => {
+    setTask({ ...task, description: event.target.value });
+  };
+
+  const resetForm = () => {
+    setTask({
+      title: "",
+      description: "",
+      duration: 0,
+    });
+  };
+
+  const handleOnSave = () => {
+    if (!task.title || !task.duration || !task.description) {
+      alert("Please, fill all fields!");
+    }
+
+    onSave(task);
+    resetForm();
+  };
   if (editMode) {
     return (
       <div className="add-task-container border-left">
-        <input placeholder="Task title..." />
+        <input
+          placeholder="Task title..."
+          value={task.title}
+          onChange={onChangeTitle}
+          maxLength={31}
+        />
         <textarea
           className="rounded"
           name=""
           id=""
           cols="30"
           rows="10"
-        ></textarea>
+          value={task.description}
+          onChange={onChangeDescription}
+        />
         <Select
           data={[
             { name: "15min", value: 1 },
@@ -21,18 +62,24 @@ const AddTaskButton = ({ onSave, onDelete, task }) => {
             { name: "45min", value: 3 },
             { name: "60min", value: 4 },
           ]}
+          value={task.duration}
+          onChange={onChangeDuration}
           className="form-select select select-secondary mt-3"
         />
 
         <div className="d-flex gap-3 mt-3">
-          {task && <button className="btn btn-sm btn-light">Delete</button>}
           <button
             className="ms-auto btn btn-sm btn-light"
-            onClick={() => setEditMode(!editMode)}
+            onClick={() => {
+              setEditMode(!editMode);
+              resetForm();
+            }}
           >
             Cancel
           </button>
-          <button className="btn btn-sm btn-dark">Save</button>
+          <button className="btn btn-sm btn-dark" onClick={handleOnSave}>
+            Save
+          </button>
         </div>
       </div>
     );

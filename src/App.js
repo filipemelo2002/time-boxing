@@ -6,7 +6,8 @@ import { ReactComponent as Logo } from "./assets/logo.svg";
 import { useTimeBoxing } from "./contexts/TimeBoxingContext";
 
 function App() {
-  const { brainDump, onChangeBrainDump } = useTimeBoxing();
+  const { brainDump, topPriorities, onAddTopPriority, onChangeBrainDump } =
+    useTimeBoxing();
 
   return (
     <>
@@ -14,7 +15,10 @@ function App() {
         <div className="d-flex flex-column align-items-center gap-4 justify-content-center">
           <Logo className="mt-4 me-auto img-logo img-logo-container" />
           <Timer />
-          <TopPriorities />
+          <TopPriorities
+            topPriorities={topPriorities}
+            onAddTopPriority={onAddTopPriority}
+          />
           <Activities />
         </div>
         <BrainDump

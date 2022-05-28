@@ -20,7 +20,7 @@ const TopPriorities = ({ topPriorities = [], onAddTopPriority }) => {
         ))}
       </div>
       <div className="mt-3">
-        <AddTaskButton />
+        <AddTaskButton onSave={(task) => onAddTopPriority(task)} />
       </div>
     </div>
   );
