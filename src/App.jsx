@@ -8,7 +8,11 @@ function App() {
   return (
     <>
       <div className="d-grid template-columns-2 m-auto px-2 gap-3">
-        <Logo className="mt-4 me-auto img-logo img-logo-container" />
+        <Logo
+          className="mt-4 me-auto img-logo img-logo-container"
+          width="82"
+          height="46"
+        />
         <div className="d-flex flex-column align-items-center gap-4 h-100">
           <Timer />
           <TopPriorities />
