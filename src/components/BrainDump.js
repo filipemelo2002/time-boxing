@@ -8,7 +8,7 @@ const BrainDump = () => {
         Brain Dump
       </h4>
       <textarea
-        className="rounded-1 h-75"
+        className="rounded-1"
         onChange={(event) => onChangeBrainDump(event.target.value)}
         value={brainDump}
       />
