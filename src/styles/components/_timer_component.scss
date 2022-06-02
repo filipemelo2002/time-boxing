@@ -4,12 +4,6 @@
   width: 100%;
   h1 {
     font-size: 5rem;
-    @include media-breakpoint-up (xl) {
-      font-size: 6rem;
-    }
-    @include media-breakpoint-down(lg) {
-      font-size: 5rem;
-    }
 
     @include media-breakpoint-down(md) {
       font-size: 4rem;
@@ -19,7 +13,7 @@
     }
   }
 
-  button {
+  button, button:active, button:hover, button:focus {
     max-width: 9.6875rem;
     width: 100%;
   }
