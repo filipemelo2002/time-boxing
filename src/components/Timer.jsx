@@ -6,7 +6,7 @@ const Timer = () => {
   const alarmAudio = useMemo(() => new Audio(alarmSound), [alarmSound]);
 
   const [isCountingDown, setIsCountingDown] = useState(false);
-  const [time, setTime] = useState(3);
+  const [time, setTime] = useState(0);
 
   const calculateTimeLeft = () => {
     const newTime = time - 1;
