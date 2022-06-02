@@ -17,4 +17,9 @@
     max-width: 9.6875rem;
     width: 100%;
   }
+
+  button:disabled {
+    background-color: var(--bs-white);
+    color: $primary;
+  }
 }
