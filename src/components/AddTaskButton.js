@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ACTIVITY_STATUS } from "../constants";
 import { uuidv4 } from "../utils";
 import Select from "./Select";
 const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
@@ -36,7 +37,7 @@ const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
       alert("Por favor, preencha todos os campos!");
       return;
     }
-    onSave({ ...task, id: uuidv4() });
+    onSave({ ...task, id: uuidv4(), status: ACTIVITY_STATUS.CREATED });
     resetForm();
   };
   if (editMode) {
