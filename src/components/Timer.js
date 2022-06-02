@@ -45,13 +45,14 @@ const Timer = () => {
   return (
     <div className="timer-component rounded-2 d-flex flex-column">
       <h1 className="fw-bold text-light mx-auto">{convertTimeToMMSS(time)}</h1>
-      <button
-        className="btn btn-lg btn-primary mx-auto"
-        onClick={toggleTimer}
-        disabled={time === 0}
-      >
-        {isCountingDown ? "Stop" : "Start"}
-      </button>
+      {time > 0 && (
+        <button
+          className="btn btn-lg btn-primary mx-auto"
+          onClick={toggleTimer}
+        >
+          {isCountingDown ? "Pause" : "Resume"}
+        </button>
+      )}
     </div>
   );
 };
