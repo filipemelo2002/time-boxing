@@ -6,3 +6,12 @@ export const uuidv4 = () => {
     ).toString(16)
   );
 };
+
+export const convertTimeToMMSS = (value) => {
+  if (!value) return "--:--";
+  const minutes = Math.floor(value / 60);
+  const seconds = value % 60;
+  return `${minutes < 10 ? `0${minutes}` : minutes}:${
+    seconds < 10 ? `0${seconds}` : seconds
+  }`;
+};
