@@ -6,18 +6,19 @@ import AddTaskButton from "./AddTaskButton";
 import Select from "./Select";
 
 const Activities = () => {
-  const [time, setTime] = useState(new Date().getHours());
-  const { activities, onAddActivity, onRemoveActivity } = useTimeBoxing();
+  const [hour, setHour] = useState(new Date().getHours());
+  const { activities, onAddActivity, onRemoveActivity, onStartActivity } =
+    useTimeBoxing();
   const totalActivitiesDuration = useMemo(() => {
     const currentTimeActivities = activities.filter(
-      (activity) => activity.time === time
+      (activity) => activity.hour === hour
     );
     const durationSum = currentTimeActivities.reduce(
       (sum, activity) => sum + activity.duration,
       0
     );
     return durationSum;
-  }, [activities, time]);
+  }, [activities, hour]);
   return (
     <div className="activities-component w-100">
       <div className="d-flex border-2 border-bottom">
@@ -51,13 +52,13 @@ const Activities = () => {
             { name: "22:00", value: 22 },
             { name: "23:00", value: 23 },
           ]}
-          value={time}
-          onChange={(event) => setTime(Number(event.target.value))}
+          value={hour}
+          onChange={(event) => setHour(Number(event.target.value))}
         />
       </div>
       <div className="d-flex flex-column gap-3 mt-3">
         {activities
-          .filter((activity) => activity.time === time)
+          .filter((activity) => activity.hour === hour)
           .map((activity) => (
             <ActivityItem
               key={activity.id}
@@ -79,7 +80,7 @@ const Activities = () => {
       {totalActivitiesDuration < 4 && (
         <div className="mt-3">
           <AddTaskButton
-            onSave={(task) => onAddActivity({ ...task, time })}
+            onSave={(task) => onAddActivity({ ...task, hour })}
             maxDuration={4 - totalActivitiesDuration}
           />
         </div>
