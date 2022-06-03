@@ -37,7 +37,12 @@ const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
       alert("Por favor, preencha todos os campos!");
       return;
     }
-    onSave({ ...task, id: uuidv4(), status: ACTIVITY_STATUS.CREATED });
+    onSave({
+      ...task,
+      id: uuidv4(),
+      time: task.duration * 15 * 60,
+      status: ACTIVITY_STATUS.CREATED,
+    });
     resetForm();
   };
   if (editMode) {
