@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ACTIVITY_TYPES } from "../constants";
 import { useTimeBoxing } from "../contexts/TimeBoxingContext";
 import ActivityItem from "./ActivityItem";
 import AddTaskButton from "./AddTaskButton";
@@ -65,6 +66,12 @@ const Activities = () => {
               done={activity.done}
               duration={activity.duration}
               onRemove={() => onRemoveActivity(activity.id)}
+              onStartAcivity={() =>
+                onStartActivity({
+                  id: activity.id,
+                  type: ACTIVITY_TYPES.ACTIVITIES,
+                })
+              }
             />
           ))}
       </div>
