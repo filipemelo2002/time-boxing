@@ -1,14 +1,19 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 const INITIAL_STATE = {
   braindump: "",
   topPriorities: [],
   activities: [],
+  timer: {
+    id: "",
+    type: "",
+  },
 };
 const TimeBoxingContext = createContext({});
 
 const TimeBoxingContextProvider = ({ children }) => {
   const [timeBoxing, setTimeBoxing] = useState(INITIAL_STATE);
+  const timedActivity = useMemo(() => getTimerActivity(), [timeBoxing]);
 
   const onChangeBrainDump = (braindump) => {
     setTimeBoxing({ ...timeBoxing, braindump });
@@ -42,6 +47,34 @@ const TimeBoxingContextProvider = ({ children }) => {
     );
     setTimeBoxing(newTimeBoxing);
   };
+
+  const onStartActivity = ({ id, type }) => {
+    setTimeBoxing({
+      ...timeBoxing,
+      timer: { id, type },
+    });
+  };
+
+  const onUpdateActivityTime = (time) => {
+    const newTimeBoxing = structuredClone(timeBoxing);
+    const { type, id } = newTimeBoxing.timer;
+
+    if (!type || !id) return;
+
+    const activity = newTimeBoxing[type].find((item) => item.id === id);
+
+    if (!activity) return;
+
+    activity.time = time;
+    setTimeBoxing(newTimeBoxing);
+  };
+
+  function getTimerActivity() {
+    const { type, id } = timeBoxing.timer;
+    if (!type || !id) return;
+    return timeBoxing[type].find((item) => item.id === id);
+  }
+
   return (
     <TimeBoxingContext.Provider
       value={{
@@ -51,6 +84,9 @@ const TimeBoxingContextProvider = ({ children }) => {
         onRemoveTopPriority,
         onAddActivity,
         onRemoveActivity,
+        onStartActivity,
+        onUpdateActivityTime,
+        timedActivity,
       }}
     >
       {children}
