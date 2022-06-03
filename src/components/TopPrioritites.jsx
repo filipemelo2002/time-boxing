@@ -1,10 +1,15 @@
 import { useTimeBoxing } from "../contexts/TimeBoxingContext";
 import ActivityItem from "./ActivityItem";
 import AddTaskButton from "./AddTaskButton";
+import { ACTIVITY_TYPES } from "../constants";
 
 const TopPriorities = () => {
-  const { topPriorities, onAddTopPriority, onRemoveTopPriority } =
-    useTimeBoxing();
+  const {
+    topPriorities,
+    onAddTopPriority,
+    onStartActivity,
+    onRemoveTopPriority,
+  } = useTimeBoxing();
 
   return (
     <div className="top-prioritites">
@@ -23,6 +28,12 @@ const TopPriorities = () => {
             description={topPriority.description}
             done={topPriority.done}
             onRemove={() => onRemoveTopPriority(topPriority.id)}
+            onStartAcivity={() =>
+              onStartActivity({
+                id: topPriority.id,
+                type: ACTIVITY_TYPES.TOP_PRIORITIES,
+              })
+            }
           />
         ))}
       </div>
