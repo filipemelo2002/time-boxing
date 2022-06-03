@@ -2,7 +2,14 @@ import { useState } from "react";
 import { ReactComponent as Icon } from "../assets/check.svg";
 import Select from "./Select";
 
-const ActivityItem = ({ done, title, description, duration, onRemove }) => {
+const ActivityItem = ({
+  onStartAcivity,
+  done,
+  title,
+  description,
+  duration,
+  onRemove,
+}) => {
   const [openDescription, setOpenDescription] = useState(false);
   return (
     <div
@@ -51,7 +58,16 @@ const ActivityItem = ({ done, title, description, duration, onRemove }) => {
             >
               Delete
             </button>
-            <button className="btn btn-sm btn-dark">Start</button>
+            <button
+              className="btn btn-sm btn-dark"
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                onStartAcivity();
+              }}
+            >
+              Start
+            </button>
           </div>
         </>
       )}
