@@ -18,7 +18,9 @@ const ActivityItem = ({
 
   return (
     <div
-      className="activity-item border-left d-flex flex-column gap-3 bg-white rounded p-3 "
+      className={`${
+        timer.counting && timer.id !== id ? "opacity-75" : ""
+      } activity-item border-left d-flex flex-column gap-3 bg-white rounded p-3 `}
       onClick={() => setOpenDescription(!openDescription)}
     >
       <div className="d-flex align-items-center">
