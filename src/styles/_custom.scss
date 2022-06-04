@@ -122,5 +122,9 @@ body {
   }
 }
 
+.activity-item {
+  cursor: pointer;
+}
+
 @import './components/add_task_component';
 @import './components/timer_component';
