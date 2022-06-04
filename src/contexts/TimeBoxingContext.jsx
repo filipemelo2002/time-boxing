@@ -7,13 +7,14 @@ const INITIAL_STATE = {
   timer: {
     id: "",
     type: "",
+    counting: false,
   },
 };
 const TimeBoxingContext = createContext({});
 
 const TimeBoxingContextProvider = ({ children }) => {
   const [timeBoxing, setTimeBoxing] = useState(INITIAL_STATE);
-  const timedActivity = useMemo(() => getTimerActivity(), [timeBoxing]);
+  const timedActivity = useMemo(() => getTimerActivity(), [timeBoxing.timer]);
 
   const onChangeBrainDump = (braindump) => {
     setTimeBoxing({ ...timeBoxing, braindump });
@@ -51,7 +52,7 @@ const TimeBoxingContextProvider = ({ children }) => {
   const onStartActivity = ({ id, type }) => {
     setTimeBoxing({
       ...timeBoxing,
-      timer: { id, type },
+      timer: { id, type, counting: true },
     });
   };
 
@@ -75,6 +76,13 @@ const TimeBoxingContextProvider = ({ children }) => {
     return timeBoxing[type].find((item) => item.id === id);
   }
 
+  const setTimerCounting = (value) => {
+    setTimeBoxing({
+      ...timeBoxing,
+      timer: { ...timeBoxing.timer, counting: value },
+    });
+  };
+
   return (
     <TimeBoxingContext.Provider
       value={{
@@ -87,6 +95,7 @@ const TimeBoxingContextProvider = ({ children }) => {
         onStartActivity,
         onUpdateActivityTime,
         timedActivity,
+        setTimerCounting,
       }}
     >
       {children}

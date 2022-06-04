@@ -1,21 +1,25 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import switchSound from "../assets/switch.wav";
 import alarmSound from "../assets/alarm.wav";
 import { useTimeBoxing } from "../contexts/TimeBoxingContext";
 import { convertTimeToMMSS } from "../utils";
 
 const Timer = () => {
-  const { timedActivity, onUpdateActivityTime } = useTimeBoxing();
+  const {
+    timer: { counting },
+    setTimerCounting,
+    timedActivity,
+    onUpdateActivityTime,
+  } = useTimeBoxing();
   const switchAudio = useMemo(() => new Audio(switchSound), [switchSound]);
   const alarmAudio = useMemo(() => new Audio(alarmSound), [alarmSound]);
-  const [isCountingDown, setIsCountingDown] = useState(false);
   const time = useMemo(() => timedActivity?.time || 0, [timedActivity]);
 
   const calculateTimeLeft = () => {
     const newTime = time - 1;
     if (newTime <= 0) {
       alarmAudio.play();
-      setIsCountingDown(false);
+      setTimerCounting(false);
       return 0;
     }
     return newTime;
@@ -23,11 +27,11 @@ const Timer = () => {
 
   const toggleTimer = () => {
     switchAudio.play();
-    setIsCountingDown(!isCountingDown);
+    setTimerCounting(!counting);
   };
 
   useEffect(() => {
-    if (isCountingDown) {
+    if (counting) {
       const timer = setTimeout(() => {
         const newTime = calculateTimeLeft();
         onUpdateActivityTime(newTime);
@@ -39,7 +43,7 @@ const Timer = () => {
 
   useEffect(() => {
     if (timedActivity) {
-      setIsCountingDown(true);
+      setTimerCounting(true);
     }
   }, [timedActivity]);
 
@@ -51,7 +55,7 @@ const Timer = () => {
           className="btn btn-lg btn-primary mx-auto"
           onClick={toggleTimer}
         >
-          {isCountingDown ? "Pause" : "Resume"}
+          {counting ? "Pause" : "Resume"}
         </button>
       )}
     </div>
