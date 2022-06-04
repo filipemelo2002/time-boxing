@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ACTIVITY_STATUS } from "../constants";
 import { uuidv4 } from "../utils";
 import Select from "./Select";
 const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
@@ -41,7 +40,6 @@ const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
       ...task,
       id: uuidv4(),
       time: task.duration * 15 * 60,
-      status: ACTIVITY_STATUS.CREATED,
     });
     resetForm();
   };
