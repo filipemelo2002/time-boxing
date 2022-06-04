@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { ReactComponent as Icon } from "../assets/check.svg";
 import Select from "./Select";
+import { useTimeBoxing } from "../contexts/TimeBoxingContext";
 
 const ActivityItem = ({
+  id,
   onStartAcivity,
   done,
   title,
@@ -11,6 +13,9 @@ const ActivityItem = ({
   onRemove,
 }) => {
   const [openDescription, setOpenDescription] = useState(false);
+
+  const { timer } = useTimeBoxing();
+
   return (
     <div
       className="activity-item border-left d-flex flex-column gap-3 bg-white rounded p-3 "
@@ -59,12 +64,15 @@ const ActivityItem = ({
               Delete
             </button>
             <button
-              className="btn btn-sm btn-dark"
+              className={`btn btn-sm btn-dark ${
+                timer.id === id ? "d-none" : ""
+              }`}
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
                 onStartAcivity();
               }}
+              disabled={timer.counting}
             >
               Start
             </button>

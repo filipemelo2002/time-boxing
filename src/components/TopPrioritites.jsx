@@ -23,6 +23,7 @@ const TopPriorities = () => {
       <div className="d-flex flex-column gap-3 mt-3">
         {topPriorities.map((topPriority) => (
           <ActivityItem
+            id={topPriority.id}
             key={topPriority.id}
             title={topPriority.title}
             description={topPriority.description}

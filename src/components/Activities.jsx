@@ -61,6 +61,7 @@ const Activities = () => {
           .filter((activity) => activity.hour === hour)
           .map((activity) => (
             <ActivityItem
+              id={activity.id}
               key={activity.id}
               title={activity.title}
               description={activity.description}
