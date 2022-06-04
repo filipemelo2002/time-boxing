@@ -62,6 +62,7 @@ const ActivityItem = ({
                 event.stopPropagation();
                 onRemove();
               }}
+              disabled={timer.counting}
             >
               Delete
             </button>
