@@ -83,6 +83,14 @@ const TimeBoxingContextProvider = ({ children }) => {
     });
   };
 
+  const resetTimer = () => {
+    setTimeBoxing({
+      ...timeBoxing,
+      timer: {
+        ...INITIAL_STATE.timer,
+      },
+    });
+  };
   return (
     <TimeBoxingContext.Provider
       value={{
@@ -96,6 +104,7 @@ const TimeBoxingContextProvider = ({ children }) => {
         onUpdateActivityTime,
         timedActivity,
         setTimerCounting,
+        resetTimer,
       }}
     >
       {children}

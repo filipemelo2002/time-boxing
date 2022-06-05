@@ -8,6 +8,7 @@ const Timer = () => {
   const {
     timer: { counting },
     setTimerCounting,
+    resetTimer,
     timedActivity,
     onUpdateActivityTime,
   } = useTimeBoxing();
@@ -17,12 +18,7 @@ const Timer = () => {
 
   const calculateTimeLeft = () => {
     const newTime = time - 1;
-    if (newTime <= 0) {
-      alarmAudio.play();
-      setTimerCounting(false);
-      return 0;
-    }
-    return newTime;
+    return newTime > 0 ? newTime : 0;
   };
 
   const toggleTimer = () => {
@@ -32,12 +28,15 @@ const Timer = () => {
 
   useEffect(() => {
     if (counting) {
-      const timer = setTimeout(() => {
+      const timedFunction = setTimeout(() => {
         const newTime = calculateTimeLeft();
         onUpdateActivityTime(newTime);
+        if (newTime === 0) {
+          alarmAudio.play();
+          resetTimer();
+        }
       }, 1000);
-
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timedFunction);
     }
   });
 
