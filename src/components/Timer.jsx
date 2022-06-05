@@ -14,7 +14,7 @@ const Timer = () => {
   } = useTimeBoxing();
   const switchAudio = useMemo(() => new Audio(switchSound), [switchSound]);
   const alarmAudio = useMemo(() => new Audio(alarmSound), [alarmSound]);
-  const time = useMemo(() => timedActivity?.time || 0, [timedActivity]);
+  const time = useMemo(() => timedActivity?.time ?? 0, [timedActivity]);
 
   const calculateTimeLeft = () => {
     const newTime = time - 1;
@@ -33,13 +33,17 @@ const Timer = () => {
         onUpdateActivityTime(newTime);
         if (newTime === 0) {
           alarmAudio.play();
-          resetTimer();
         }
       }, 1000);
       return () => clearTimeout(timedFunction);
     }
   });
 
+  useEffect(() => {
+    if (time === 0) {
+      resetTimer();
+    }
+  }, [time]);
   return (
     <div className="timer-component rounded-2 d-flex flex-column">
       <h1 className="fw-bold text-light mx-auto">{convertTimeToMMSS(time)}</h1>
