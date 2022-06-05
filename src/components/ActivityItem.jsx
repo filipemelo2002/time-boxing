@@ -11,6 +11,7 @@ const ActivityItem = ({
   description,
   duration,
   onRemove,
+  onDone,
 }) => {
   const [openDescription, setOpenDescription] = useState(false);
 
@@ -35,6 +36,11 @@ const ActivityItem = ({
           className={`shadow btn p-0 ms-auto ${
             done ? "btn-success" : "btn-light"
           }`}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            onDone();
+          }}
         >
           <Icon />
         </button>
