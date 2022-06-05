@@ -41,12 +41,6 @@ const Timer = () => {
     }
   });
 
-  useEffect(() => {
-    if (timedActivity) {
-      setTimerCounting(true);
-    }
-  }, [timedActivity]);
-
   return (
     <div className="timer-component rounded-2 d-flex flex-column">
       <h1 className="fw-bold text-light mx-auto">{convertTimeToMMSS(time)}</h1>
