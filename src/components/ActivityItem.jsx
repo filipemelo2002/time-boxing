@@ -15,7 +15,6 @@ const ActivityItem = ({
   const [openDescription, setOpenDescription] = useState(false);
 
   const { timer } = useTimeBoxing();
-
   return (
     <div
       className={`${
@@ -34,7 +33,7 @@ const ActivityItem = ({
 
         <button
           className={`shadow btn p-0 ms-auto ${
-            done ? "btn-primary" : "btn-light"
+            done ? "btn-success" : "btn-light"
           }`}
         >
           <Icon />
@@ -42,7 +41,9 @@ const ActivityItem = ({
       </div>
       {openDescription && (
         <>
-          <p>{description}</p>
+          <p className={done ? "text-decoration-line-through text-gray" : ""}>
+            {description}
+          </p>
           <div className="d-flex gap-3">
             <Select
               data={[
@@ -68,7 +69,7 @@ const ActivityItem = ({
             </button>
             <button
               className={`btn btn-sm btn-dark ${
-                timer.id === id ? "d-none" : ""
+                timer.id === id || done ? "d-none" : ""
               }`}
               onClick={(event) => {
                 event.preventDefault();

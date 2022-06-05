@@ -67,6 +67,7 @@ const TimeBoxingContextProvider = ({ children }) => {
     if (!activity) return;
 
     activity.time = time;
+    activity.done = time === 0;
     setTimeBoxing(newTimeBoxing);
   };
 
