@@ -84,6 +84,15 @@ const TimeBoxingContextProvider = ({ children }) => {
     });
   };
 
+  const setActivityAsDone = ({ id, type }) => {
+    const newTimeBoxing = structuredClone(timeBoxing);
+    const activity = newTimeBoxing[type].find((item) => item.id === id);
+    if (!activity) return;
+    activity.done = true;
+    activity.time = 0;
+    setTimeBoxing(newTimeBoxing);
+  };
+
   const resetTimer = () => {
     setTimeBoxing({
       ...timeBoxing,
@@ -106,6 +115,7 @@ const TimeBoxingContextProvider = ({ children }) => {
         timedActivity,
         setTimerCounting,
         resetTimer,
+        setActivityAsDone,
       }}
     >
       {children}

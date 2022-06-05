@@ -7,8 +7,13 @@ import Select from "./Select";
 
 const Activities = () => {
   const [hour, setHour] = useState(new Date().getHours());
-  const { activities, onAddActivity, onRemoveActivity, onStartActivity } =
-    useTimeBoxing();
+  const {
+    activities,
+    onAddActivity,
+    onRemoveActivity,
+    onStartActivity,
+    setActivityAsDone,
+  } = useTimeBoxing();
   const totalActivitiesDuration = useMemo(() => {
     const currentTimeActivities = activities.filter(
       (activity) => activity.hour === hour
@@ -70,6 +75,12 @@ const Activities = () => {
               onRemove={() => onRemoveActivity(activity.id)}
               onStartAcivity={() =>
                 onStartActivity({
+                  id: activity.id,
+                  type: ACTIVITY_TYPES.ACTIVITIES,
+                })
+              }
+              onDone={() =>
+                setActivityAsDone({
                   id: activity.id,
                   type: ACTIVITY_TYPES.ACTIVITIES,
                 })

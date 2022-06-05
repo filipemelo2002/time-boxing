@@ -9,6 +9,7 @@ const TopPriorities = () => {
     onAddTopPriority,
     onStartActivity,
     onRemoveTopPriority,
+    setActivityAsDone,
   } = useTimeBoxing();
 
   return (
@@ -31,6 +32,12 @@ const TopPriorities = () => {
             onRemove={() => onRemoveTopPriority(topPriority.id)}
             onStartAcivity={() =>
               onStartActivity({
+                id: topPriority.id,
+                type: ACTIVITY_TYPES.TOP_PRIORITIES,
+              })
+            }
+            onDone={() =>
+              setActivityAsDone({
                 id: topPriority.id,
                 type: ACTIVITY_TYPES.TOP_PRIORITIES,
               })
