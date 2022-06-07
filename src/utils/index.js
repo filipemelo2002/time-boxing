@@ -45,3 +45,19 @@ export const debounce = (func, wait, immediate) => {
     if (callNow) func.apply(context, args);
   };
 };
+
+export const requestNotificationPermission = () => {
+  if (
+    "Notification" in window &&
+    Notification.permission !== "granted" &&
+    Notification.permission !== "denied"
+  ) {
+    Notification.requestPermission();
+  }
+};
+
+export const notify = (title, body) => {
+  if ("Notification" in window && Notification.permission === "granted") {
+    return new Notification(title, { body });
+  }
+};
