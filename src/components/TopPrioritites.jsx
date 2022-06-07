@@ -28,6 +28,7 @@ const TopPriorities = () => {
             key={topPriority.id}
             title={topPriority.title}
             description={topPriority.description}
+            duration={topPriority.duration}
             done={topPriority.done}
             onRemove={() => onRemoveTopPriority(topPriority.id)}
             onStartAcivity={() =>
