@@ -1,7 +1,7 @@
 import { useTimeBoxing } from "../contexts/TimeBoxingContext";
 
 const BrainDump = () => {
-  const { brainDump, onChangeBrainDump } = useTimeBoxing();
+  const { braindump, onChangeBrainDump } = useTimeBoxing();
   return (
     <div className="braindump mx-auto h-100">
       <h4 className="text-white fw-bold border-2 border-bottom pb-3">
@@ -10,7 +10,7 @@ const BrainDump = () => {
       <textarea
         className="rounded-1"
         onChange={(event) => onChangeBrainDump(event.target.value)}
-        value={brainDump}
+        value={braindump}
       />
     </div>
   );
