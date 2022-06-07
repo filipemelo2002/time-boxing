@@ -1,5 +1,11 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { debounce, restoreLocalStorage, saveLocalStorage } from "../utils";
+import {
+  debounce,
+  notify,
+  requestNotificationPermission,
+  restoreLocalStorage,
+  saveLocalStorage,
+} from "../utils";
 
 const INITIAL_STATE = {
   braindump: "",
@@ -22,6 +28,7 @@ const TimeBoxingContextProvider = ({ children }) => {
   };
 
   const onAddTopPriority = (topPriority) => {
+    requestNotificationPermission();
     setTimeBoxing({
       ...timeBoxing,
       topPriorities: [...timeBoxing.topPriorities, topPriority],
@@ -38,6 +45,7 @@ const TimeBoxingContextProvider = ({ children }) => {
   const onAddActivity = (activity) => {
     const newTimeBoxing = structuredClone(timeBoxing);
     newTimeBoxing.activities.push(activity);
+    requestNotificationPermission();
     setTimeBoxing(newTimeBoxing);
   };
 
@@ -69,6 +77,10 @@ const TimeBoxingContextProvider = ({ children }) => {
 
     activity.time = time;
     activity.done = time === 0;
+    if (time === 0) {
+      notify("TimeBoxing", "Tarefa concluída!!");
+    }
+
     setTimeBoxing(newTimeBoxing);
   };
 
