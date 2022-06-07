@@ -1,4 +1,5 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { debounce, restoreLocalStorage, saveLocalStorage } from "../utils";
 
 const INITIAL_STATE = {
   braindump: "",
@@ -101,6 +102,18 @@ const TimeBoxingContextProvider = ({ children }) => {
       },
     });
   };
+
+  useEffect(() => {
+    const previousState = restoreLocalStorage();
+    setTimeBoxing(previousState || INITIAL_STATE);
+  }, []);
+
+  useEffect(() => {
+    debounce(() => {
+      saveLocalStorage(timeBoxing);
+    }, 1000)();
+  }, [timeBoxing]);
+
   return (
     <TimeBoxingContext.Provider
       value={{

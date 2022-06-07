@@ -15,3 +15,33 @@ export const convertTimeToMMSS = (value) => {
     seconds < 10 ? `0${seconds}` : seconds
   }`;
 };
+
+export const saveLocalStorage = (state) => {
+  localStorage.setItem(
+    `${new Date().toLocaleDateString()}-TIMEBOXING`,
+    JSON.stringify(state)
+  );
+};
+
+export const restoreLocalStorage = () => {
+  const state = localStorage.getItem(
+    `${new Date().toLocaleDateString()}-TIMEBOXING`
+  );
+  return state && JSON.parse(state);
+};
+
+export const debounce = (func, wait, immediate) => {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
