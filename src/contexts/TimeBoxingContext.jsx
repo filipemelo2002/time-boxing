@@ -14,7 +14,7 @@ const TimeBoxingContext = createContext({});
 
 const TimeBoxingContextProvider = ({ children }) => {
   const [timeBoxing, setTimeBoxing] = useState(INITIAL_STATE);
-  const timedActivity = useMemo(() => getTimerActivity(), [timeBoxing.timer]);
+  const timedActivity = useMemo(() => getTimerActivity(), [timeBoxing]);
 
   const onChangeBrainDump = (braindump) => {
     setTimeBoxing({ ...timeBoxing, braindump });
