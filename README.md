@@ -41,7 +41,9 @@ npm install
 
 ## 📷 Screenshot
 You can also see this on [Figma](https://www.figma.com/file/8sELvbIaBWiJUjGmRZQoO7/TimeBoxing?node-id=0%3A1)
-![image](https://user-images.githubusercontent.com/26236991/164977600-fa207b93-754e-4e16-b161-23332f1c4f50.png)
+![image](https://user-images.githubusercontent.com/26236991/172503682-108ac748-d8ec-40b0-8ffe-c014cfb06c27.png)
+
+![image](https://user-images.githubusercontent.com/26236991/172503662-546ae1a4-fec9-4449-ab26-ff2b856737a4.png)
 
 
 # Available Scripts
