@@ -40,7 +40,7 @@ const AddTaskButton = ({ onSave, maxDuration = 4 }) => {
       ...task,
       id: uuidv4(),
       done: false,
-      time: task.duration * 15 * 60,
+      time: 3,
     });
     resetForm();
   };
