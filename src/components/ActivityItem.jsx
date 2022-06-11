@@ -36,6 +36,7 @@ const ActivityItem = ({
           className={`shadow btn p-0 ms-auto ${
             done ? "btn-success" : "btn-light"
           }`}
+          disabled={timer.id === id}
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
