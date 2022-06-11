@@ -47,17 +47,25 @@ export const debounce = (func, wait, immediate) => {
 };
 
 export const requestNotificationPermission = () => {
-  if (
-    "Notification" in window &&
-    Notification.permission !== "granted" &&
-    Notification.permission !== "denied"
-  ) {
-    Notification.requestPermission();
+  try {
+    if (
+      "Notification" in window &&
+      Notification.permission !== "granted" &&
+      Notification.permission !== "denied"
+    ) {
+      Notification.requestPermission();
+    }
+  } catch (exception) {
+    console.error(exception);
   }
 };
 
 export const notify = (title, body) => {
-  if ("Notification" in window && Notification.permission === "granted") {
-    return new Notification(title, { body });
+  try {
+    if ("Notification" in window && Notification.permission === "granted") {
+      return new Notification(title, { body });
+    }
+  } catch (exception) {
+    console.error(exception);
   }
 };
